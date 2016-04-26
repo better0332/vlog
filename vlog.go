@@ -61,7 +61,7 @@ const (
 )
 
 var (
-	level uint
+	level int
 
 	std = log.New(os.Stderr, "", LstdFlags)
 )
@@ -71,21 +71,21 @@ var (
 type Verbose bool
 
 func init() {
-	flag.UintVar(&level, "v", 0, "log level for V logs")
+	flag.IntVar(&level, "v", 0, "log level for V logs")
 }
 
 // Set log level, just use at parameter initialize zone.
-func SetLogLevel(v uint) {
+func SetLogLevel(v int) {
 	level = v
 }
 
 // Get log level, just use at parameter initialize zone.
-func GetLogLevel() uint {
+func GetLogLevel() int {
 	return level
 }
 
 // Whether an individual call to V generates a log record depends on the setting of level.
-func V(v uint) Verbose {
+func V(v int) Verbose {
 	if v <= level {
 		return true
 	}
