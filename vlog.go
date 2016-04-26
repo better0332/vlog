@@ -134,49 +134,49 @@ func SetPrefix(prefix string) {
 // Print calls Output to print to the standard logger.
 // Arguments are handled in the manner of fmt.Print.
 func Print(v ...interface{}) {
-	log.Print(v)
+	log.Print(v...)
 }
 
 // Printf calls Output to print to the standard logger.
 // Arguments are handled in the manner of fmt.Printf.
 func Printf(format string, v ...interface{}) {
-	log.Printf(format, v)
+	log.Printf(format, v...)
 }
 
 // Println calls Output to print to the standard logger.
 // Arguments are handled in the manner of fmt.Println.
 func Println(v ...interface{}) {
-	log.Println(v)
+	log.Println(v...)
 }
 
 // Fatal is equivalent to Print() followed by a call to os.Exit(1).
 func Fatal(v ...interface{}) {
-	log.Fatal(v)
+	log.Fatal(v...)
 }
 
 // Fatalf is equivalent to Printf() followed by a call to os.Exit(1).
 func Fatalf(format string, v ...interface{}) {
-	log.Fatalf(format, v)
+	log.Fatalf(format, v...)
 }
 
 // Fatalln is equivalent to Println() followed by a call to os.Exit(1).
 func Fatalln(v ...interface{}) {
-	log.Fatalln()
+	log.Fatalln(v...)
 }
 
 // Panic is equivalent to Print() followed by a call to panic().
 func Panic(v ...interface{}) {
-	log.Panic(v)
+	log.Panic(v...)
 }
 
 // Panicf is equivalent to Printf() followed by a call to panic().
 func Panicf(format string, v ...interface{}) {
-	log.Panicf(format, v)
+	log.Panicf(format, v...)
 }
 
 // Panicln is equivalent to Println() followed by a call to panic().
 func Panicln(v ...interface{}) {
-	log.Panicln(v)
+	log.Panicln(v...)
 }
 
 // Output writes the output for a logging event.  The string s contains
