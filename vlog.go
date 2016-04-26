@@ -116,7 +116,7 @@ func Flags() int {
 
 // SetFlags sets the output flags for the standard logger.
 func SetFlags(flag int) {
-	log.Flags()
+	log.SetFlags(flag)
 }
 
 // Prefix returns the output prefix for the standard logger.
