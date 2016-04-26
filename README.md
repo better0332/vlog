@@ -6,7 +6,9 @@ If flag.Parse be called before any logging, -v flag(default 0) use automaticlly.
 
 ## Basic examples:
 ```go
-vlog.SetLogLevel(3)
+if !vlog.IsLevelParsed() {
+	vlog.SetLogLevel(3)
+}
 vlog.GetLogLevel()
 
 vlog.Println("Prepare to repel boarders")
