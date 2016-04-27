@@ -2,7 +2,7 @@
 // It implements most std log functions(except logger), variables
 // and add provides V-style logging controlled by the -v flag or SetLogLevel()
 // If flag.Parse be called before any logging, -v flag(default 0) use automaticlly.
-
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+//
 // Basic examples:
 //  vlog.SetLogLevel(3)
 //  vlog.GetLogLevel()
@@ -73,6 +73,7 @@ func init() {
 	flag.Var(&level, "v", "log level for V logs(default 0)")
 }
 
+// Level log level
 type Level int32
 
 // String is part of the flag.Value interface.
@@ -96,17 +97,17 @@ func (l *Level) Set(value string) error {
 	return nil
 }
 
-// Set log level, just use at parameter initialize zone.
+// SetLogLevel set log level, just use at parameter initialize zone.
 func SetLogLevel(v Level) {
 	level = v
 }
 
-// Get log level, just use at parameter initialize zone.
+// GetLogLevel get log level, just use at parameter initialize zone.
 func GetLogLevel() Level {
 	return level
 }
 
-// Get bool, whether be parsed for command line(use or not use -v flag)
+// IsLevelParsed get bool, whether be parsed for command line(use or not use -v flag)
 func IsLevelParsed() bool {
 	return vParsed
 }
@@ -115,7 +116,8 @@ func IsLevelParsed() bool {
 // See the documentation of V for more information.
 type Verbose bool
 
-// Whether an individual call to V generates a log record depends on the setting of level.
+// V function return Verbose,
+// whether an individual call to V generates a log record depends on the setting of level.
 func V(v Level) Verbose {
 	if v <= level {
 		return true
@@ -123,18 +125,24 @@ func V(v Level) Verbose {
 	return false
 }
 
+// Printf calls Output to print to the standard logger.
+// Arguments are handled in the manner of fmt.Printf.
 func (vb Verbose) Printf(format string, v ...interface{}) {
 	if vb {
 		std.Output(2, fmt.Sprintf(format, v...))
 	}
 }
 
+// Println calls Output to print to the standard logger.
+// Arguments are handled in the manner of fmt.Println.
 func (vb Verbose) Println(v ...interface{}) {
 	if vb {
 		std.Output(2, fmt.Sprintln(v...))
 	}
 }
 
+// Print calls Output to print to the standard logger.
+// Arguments are handled in the manner of fmt.Print.
 func (vb Verbose) Print(v ...interface{}) {
 	if vb {
 		std.Output(2, fmt.Sprint(v...))
